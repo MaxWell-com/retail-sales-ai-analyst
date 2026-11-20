@@ -1,0 +1,1558 @@
+[
+ {
+  "id": "G1",
+  "src": "reference portal answer Q1",
+  "q": "В каких сетях продается NORD и какая доля Гранита в его продажах? Категория Косметика, январь–август 2026 к январю–августу 2025",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "period": "2026-01..2026-08"
+    },
+    "name": "период — янв–авг 2026, не 2025 (L5-3)"
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "has": {
+     "network": "Гранит"
+    },
+    "name": "Гранит — разрез, а не фильтр (L2-9)"
+   },
+   {
+    "type": "slice",
+    "re": "Косметика"
+   },
+   {
+    "type": "fact",
+    "entity": "Гранит",
+    "value": 40.56,
+    "unit": "%",
+    "name": "доля Гранита в продажах NORD 40,6%",
+    "note": "ranking level=network, manufacturer=NORD, portal, 2026-01..2026-08, focus=Гранит; SQL net_sku: Гранит 493,66 млн из 1 217,2 млн руб. = 40,56%."
+   },
+   {
+    "type": "num_text",
+    "entity": "Гранит",
+    "value": 40.56,
+    "unit": "%",
+    "name": "в ответе доля Гранита 40,6%"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD|9 сопостав|9 сет",
+    "value": 14.94,
+    "unit": "%",
+    "name": "рост NORD по 9 сетям +14,9%",
+    "note": "SQL: NORD, портал, 9 сопоставимых сетей, янв–авг 2026 к янв–авг 2025: 1 053,3 → 1 210,7 млн руб. = +14,94%. Рост по всем сетям (+13,1%) методика не считает основным, поэтому не проверяется."
+   }
+  ]
+ },
+ {
+  "id": "G2",
+  "src": "reference portal answer Q2",
+  "q": "Кто ближайшие конкуренты NORD в категории Косметика за январь–август 2026?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "competitors"
+    ]
+   },
+   {
+    "type": "fact",
+    "entity": "UNIVERA",
+    "value": 1785552212,
+    "unit": "руб.",
+    "name": "UNIVERA 1,79 млрд"
+   },
+   {
+    "type": "fact",
+    "entity": "HELMAN",
+    "value": 1530201087,
+    "unit": "руб.",
+    "name": "HELMAN 1,53 млрд"
+   },
+   {
+    "type": "fact",
+    "entity": "ESTRA LAB",
+    "value": 1040673788,
+    "unit": "руб.",
+    "name": "ESTRA LAB 1,04 млрд"
+   },
+   {
+    "type": "answer",
+    "name": "в ответе назван UNIVERA",
+    "re": "UNIVERA"
+   }
+  ],
+  "note": "competitors: NORD, портал, янв–авг 2026, все сети. Сегменты NORD — 5 сочетаний подгруппа × товар (≥0,5% продаж NORD, 1,22 млрд руб.); конкуренты 0,5–2× от NORD в этих сегментах, без СТМ и «не указан»: UNIVERA 1,79 млрд (1,47×), HELMAN 1,53 млрд (1,26×), ESTRA LAB 1,04 млрд (0,86×)."
+ },
+ {
+  "id": "G3",
+  "src": "reference portal answer Q3",
+  "q": "Почему выросли продажи NORD в Граните в январе–августе 2026 к тому же периоду 2025? Категория Косметика",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "factors",
+     "profile"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "period": "2026-01..2026-08",
+     "network": "Гранит"
+    },
+    "name": "период янв–авг 2026 и сеть Гранит в аргументах"
+   },
+   {
+    "type": "fact",
+    "value": 413997199,
+    "unit": "руб.",
+    "name": "база 414,0 млн"
+   },
+   {
+    "type": "fact",
+    "value": 493659490,
+    "unit": "руб.",
+    "name": "текущий 493,7 млн"
+   },
+   {
+    "type": "num_text",
+    "value": 19.24,
+    "unit": "%",
+    "name": "в ответе +19,2%"
+   }
+  ],
+  "note": "factors: NORD, портал, сеть Гранит, янв–авг 2026 к янв–авг 2025. SQL net_sku: 414,00 -> 493,66 млн руб., +19,24%. На синтетической панели продажи растут, поэтому вопрос — «почему выросли»."
+ },
+ {
+  "id": "G4",
+  "src": "reference portal answer Q4",
+  "q": "Растут ли все производители в категории Косметика или только NORD? Январь–август 2026 к январю–августу 2025",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "competitors",
+     "profile"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "period": "2026-01..2026-08"
+    },
+    "name": "период — янв–авг 2026, не 2025 (L5-3)"
+   },
+   {
+    "type": "fact",
+    "entity": "рын",
+    "value": 18.38,
+    "unit": "%",
+    "name": "рынок категории +18,4% (9 сетей)"
+   },
+   {
+    "type": "num_text",
+    "entity": "рын|категори|производител",
+    "value": 18.38,
+    "unit": "%",
+    "name": "в ответе рост рынка +18,4%"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD|9 сопостав|9 сет",
+    "value": 14.94,
+    "unit": "%",
+    "name": "NORD +14,9% (9 сетей)"
+   }
+  ],
+  "note": "ranking level=manufacturer, focus=NORD, портал, янв–авг 2026 к янв–авг 2025. SQL net_sku, 9 сопоставимых сетей: рынок 16,38 -> 19,39 млрд руб., +18,38%; NORD 1,053 -> 1,211 млрд, +14,94% (растут все 10 крупнейших производителей)."
+ },
+ {
+  "id": "M1",
+  "src": "exploratory question",
+  "q": "Сравни среднюю цену продажи и закупочную цену сети за штуку у детских шампуней NORD и AURIGA в Ниве и Граните, сентябрь 2026",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "prices"
+    ]
+   },
+   {
+    "type": "fact",
+    "entity": [
+     "Нив",
+     "NORD"
+    ],
+    "value": 271.92,
+    "unit": "руб./шт.",
+    "name": "Нива NORD цена 271,9 руб./шт."
+   },
+   {
+    "type": "fact",
+    "entity": [
+     "Нив",
+     "NORD"
+    ],
+    "value": 247.74,
+    "unit": "руб./шт.",
+    "name": "Нива NORD закупка 247,7 руб./шт."
+   },
+   {
+    "type": "fact",
+    "entity": [
+     "Гранит",
+     "NORD"
+    ],
+    "value": 291.81,
+    "unit": "руб./шт.",
+    "name": "Гранит NORD цена 291,8 руб./шт."
+   },
+   {
+    "type": "fact",
+    "entity": [
+     "Гранит",
+     "AURIGA"
+    ],
+    "value": 106.4,
+    "unit": "руб./шт.",
+    "name": "Гранит AURIGA закупка 106,4 руб./шт."
+   },
+   {
+    "type": "num_text",
+    "entity": [
+     "Нив",
+     "NORD"
+    ],
+    "value": 271.92,
+    "unit": "руб./шт.",
+    "name": "в ответе цена NORD в Ниве 271,9 руб./шт."
+   }
+  ],
+  "note": "prices by=network: сентябрь 2026, тип «Шампунь», детские подгруппы, NORD и AURIGA, Нива и Гранит. SQL net_sku: цена = руб./шт., закупка = cost/шт. по строкам с закупкой. Нива NORD 271,92 и 247,74; Гранит NORD 291,81 и 286,21; Гранит AURIGA 109,07 и 106,40; Нива AURIGA 98,13 и 87,87."
+ },
+ {
+  "id": "M2",
+  "src": "exploratory question",
+  "q": "Назови 3–4 компании, которые продают кондиционеры для волос в Ажуре на уровне, сопоставимом с NORD: сентябрь 2026, в штуках",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "measure": "qty"
+    },
+    "name": "в штуках"
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "focus": "NORD"
+    },
+    "name": "focus=NORD (соседи по рейтингу)"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD",
+    "value": 17266,
+    "unit": "шт.",
+    "name": "NORD — 17,3 тыс. шт."
+   },
+   {
+    "type": "fact",
+    "entity": "PARKER & GRANT",
+    "value": 38465,
+    "unit": "шт.",
+    "name": "в фактах есть лидер PARKER & GRANT — 38,5 тыс. шт. (L6-7)"
+   },
+   {
+    "type": "answer",
+    "name": "названы производители рядом с NORD",
+    "re": "(?i)UNIVERA|HELMAN|L.AURELLE"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «у лидеров не больше, чем у NORD» (L6-7)",
+    "re": "(?i)не превыша\\w* 17"
+   }
+  ],
+  "note": "ranking level=manufacturer, focus=NORD: Ажур, «Бальзам для волос», 09.2026, шт. SQL net_sku: всего 127,5 тыс. шт., 14 производителей; PARKER & GRANT 38 465, L'AURELLE 32 695, NORD 17 266 (3-е место), UNIVERA 17 092, HELMAN 8 942."
+ },
+ {
+  "id": "D1",
+  "src": "business user question",
+  "q": "Какие данные у тебя есть?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "data_info"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "D2",
+  "src": "business user question",
+  "q": "Определи топ-10 брендов по выручке в категории Косметика",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "portal": true
+    },
+    "name": "категория Косметика (portal)"
+   },
+   {
+    "type": "slice",
+    "re": "окт 2025\\s*[–-]\\s*сен 2026",
+    "name": "период по умолчанию — 12 мес. окт 2025 – сен 2026 (методика п. 2.3)"
+   },
+   {
+    "type": "fact",
+    "entity": "HILL&SHORE",
+    "value": 10519179454,
+    "unit": "руб.",
+    "name": "HILL&SHORE 10,52 млрд руб."
+   },
+   {
+    "type": "answer",
+    "name": "лидер HILL&SHORE",
+    "re": "(?i)hill\\s*&\\s*shore"
+   },
+   {
+    "type": "list_len"
+   }
+  ],
+  "note": "ranking level=brand, портал, MAT 10.2025–09.2026, все сети. SQL net_sku: HILL&SHORE 10,52 млрд руб. (35,6%), L'AURELLE PARIS 3,25 млрд."
+ },
+ {
+  "id": "D3",
+  "src": "business user question",
+  "q": "ABC-анализ ассортимента по выручке в категории Косметика",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "abc"
+    ]
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "keys": [
+     "brand"
+    ],
+    "name": "ABC — вид анализа, а не бренд (L2-7)"
+   }
+  ]
+ },
+ {
+  "id": "D4",
+  "src": "business user question",
+  "q": "Определи сезонность солнцезащитных средств",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "trend"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "trend",
+    "has": {
+     "seasonality": true
+    },
+    "name": "расчет сезонности"
+   },
+   {
+    "type": "answer",
+    "name": "пик летом (июнь–июль)",
+    "re": "(?i)июн|июл"
+   }
+  ],
+  "note": "trend seasonality: подгруппа «Солнцезащитные средства и уход»: пик июнь (индекс 1,49), май 1,46, июль 1,43; минимум декабрь 0,49."
+ },
+ {
+  "id": "D5",
+  "src": "business user question",
+  "q": "Что такое квантовый ускоритель и для чего он используется?",
+  "checks": [
+   {
+    "type": "no_tools"
+   }
+  ]
+ },
+ {
+  "id": "D6",
+  "src": "business user question",
+  "q": "Как ты можешь посчитать промо и EDLP?",
+  "checks": [
+   {
+    "type": "answer",
+    "name": "сказано, что признака промо в данных нет",
+    "re": "(?i)промо[^.]{0,120}(нет|отсутств|не (содерж|выдел|счита|различ))|(нет|отсутств)[^.]{0,120}промо"
+   }
+  ]
+ },
+ {
+  "id": "D7",
+  "src": "business user question",
+  "q": "Собери декомпозицию продаж NORD: январь–июнь 2026 к январю–июню 2025, вся Россия, все сети, категория Косметика. Объясни методологию",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "factors"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "factors",
+    "has": {
+     "period": "2026-01..2026-06"
+    },
+    "name": "период — янв–июн 2026, не 2025 (L5-3)"
+   },
+   {
+    "type": "fact",
+    "value": 809417738,
+    "unit": "руб.",
+    "name": "NORD янв–июн 2025 — 809,4 млн (все сети)"
+   },
+   {
+    "type": "fact",
+    "value": 908234891,
+    "unit": "руб.",
+    "name": "NORD янв–июн 2026 — 908,2 млн (все сети)"
+   },
+   {
+    "type": "fact",
+    "entity": "9 сет|9 сопостав",
+    "value": 13.7,
+    "unit": "%",
+    "name": "NORD в 9 сетях +13,7%"
+   }
+  ],
+  "note": "factors: NORD, портал, янв–июн 2026 к янв–июн 2025. SQL net_sku: все сети 809,42 -> 908,23 млн руб. (+12,21%); 9 сопоставимых сетей 793,07 -> 901,70 млн, +13,70%."
+ },
+ {
+  "id": "D8",
+  "src": "business user question",
+  "q": "Определи топ-10 брендов NORD по выручке",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "manufacturer": "NORD"
+    },
+    "name": "фильтр производителя NORD"
+   },
+   {
+    "type": "fact",
+    "entity": "ATELIER PROFESSIONAL",
+    "value": 1452996844,
+    "unit": "руб.",
+    "name": "ATELIER PROFESSIONAL 1,45 млрд руб."
+   },
+   {
+    "type": "answer",
+    "name": "бренды NORD в ответе",
+    "re": "(?i)королевна|atelier|гамма|vector"
+   },
+   {
+    "type": "list_len"
+   }
+  ],
+  "note": "ranking level=brand, manufacturer=NORD, категории NORD, MAT 10.2025–09.2026. SQL net_sku: ATELIER PROFESSIONAL 1,453 млрд руб., VECTOR FUSION 492,1 млн, SILK 353,5 млн."
+ },
+ {
+  "id": "D9",
+  "src": "business user question",
+  "q": "Я КАМ NORD и готовлюсь к встрече с закупщиком Маяка. Сравни продажи жидкого, кускового и хозяйственного мыла: январь и июнь 2026, в упаковках. Какие типы растут, какие снижаются?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "trend"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "measure": "qty"
+    },
+    "name": "в штуках"
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "network": "Гранит"
+    },
+    "name": "сеть Гранит (Маяк)"
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "keys": [
+     "manufacturer"
+    ],
+    "name": "«Я КАМ NORD» — роль, а не фильтр производителя (L2-21)"
+   }
+  ],
+  "note": "Маяк = сеть Гранит. SQL net_sku, Гранит, шт.: мыло жидкое 01.2026 — 59 116, 06.2026 — 50 497; кусковое 36 748 и 29 567; хозяйственное 153 856 и 140 597 (снижаются все три типа)."
+ },
+ {
+  "id": "D10",
+  "src": "business user question",
+  "q": "Ты категорийный менеджер сети Перелесок. Найди 3 SKU для вывода из сети в категории детская гигиена волос и кожи головы на основании продаж в штуках за 2025–2026 годы, из ассортимента, который есть во всех точках сети",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "assortment"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "assortment",
+    "has": {
+     "mode": "delist"
+    },
+    "name": "режим вывода"
+   },
+   {
+    "type": "args_has",
+    "tool": "assortment",
+    "has": {
+     "network": "Перелесок ТД"
+    },
+    "name": "сеть Перелесок"
+   }
+  ]
+ },
+ {
+  "id": "D11",
+  "src": "business user question",
+  "q": "Какие 3 SKU предложишь на ввод в Перелесок в категории детская гигиена волос на основании продаж в супермаркетах других сетей?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "assortment"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "assortment",
+    "has": {
+     "mode": "introduce"
+    },
+    "name": "режим ввода"
+   }
+  ]
+ },
+ {
+  "id": "D12",
+  "src": "business user question",
+  "q": "Составь прогноз продаж в штуках шампуня Королевна в сети Гранит на октябрь 2026 года на основании продаж 2025–2026 гг.",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "forecast"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "forecast",
+    "has": {
+     "target_month": "2026-10"
+    },
+    "name": "прогноз на октябрь 2026"
+   }
+  ]
+ },
+ {
+  "id": "D13",
+  "src": "business user question",
+  "q": "Есть ли у тебя данные по представленности?",
+  "checks": [
+   {
+    "type": "answer",
+    "name": "да, есть: точки с продажами",
+    "re": "(?i)точ"
+   },
+   {
+    "type": "forbid",
+    "name": "нет ложного «данных нет»",
+    "re": "(?i)нет данных (о|по) представленност|представленност\\w* (нет|отсутству)"
+   }
+  ]
+ },
+ {
+  "id": "D14",
+  "src": "business user question",
+  "q": "Карта представленности NORD по сетям: в какой доле точек каждой сети продается каждый бренд и где есть потенциал расширения",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "distribution"
+    ]
+   }
+  ]
+ },
+ {
+  "id": "N1",
+  "src": "real user session",
+  "q": "Сколько шампуней ESTRA было продано в Маяк Косметик в августе 2026 года",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "trend",
+     "ranking",
+     "profile",
+     "factors"
+    ]
+   },
+   {
+    "type": "fact",
+    "entity": "авг|ESTRA",
+    "value": 11836,
+    "unit": "шт.",
+    "name": "в фактах 11,8 тыс. шт."
+   },
+   {
+    "type": "fact",
+    "entity": "авг|ESTRA|Маяк Косметик",
+    "value": 9.73,
+    "unit": "%",
+    "name": "в фактах рост к 08.2025 +9,7% (K7)"
+   },
+   {
+    "type": "num_text",
+    "value": 11836,
+    "unit": "шт.",
+    "name": "в ответе 11,8 тыс. шт."
+   },
+   {
+    "type": "num_text",
+    "value": 9.73,
+    "unit": "%",
+    "name": "в ответе рост +9,7%"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «данные недоступны / рост не определен» (L6-5)",
+    "re": "(?i)недоступн|не определен|не выделен|уточнени\\w* источник"
+   }
+  ],
+  "note": "trend measure=qty: бренд ESTRA, тип «Шампунь», баннер Маяк Косметик (сеть Гранит). SQL net_sku: 08.2026 — 11 836 шт., 08.2025 — 10 786 шт., +9,73%."
+ },
+ {
+  "id": "N2",
+  "src": "real user session",
+  "q": "Сколько шампуней ESTRA продано в Маяк Косметик с января по сентябрь 2026 к тому же периоду 2025, в штуках",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "trend",
+     "ranking",
+     "profile",
+     "factors"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "period": "2026-01..2026-09"
+    },
+    "name": "период янв–сен 2026"
+   },
+   {
+    "type": "fact",
+    "value": 104162,
+    "unit": "шт.",
+    "name": "в фактах 104,2 тыс. шт."
+   },
+   {
+    "type": "fact",
+    "value": 12.26,
+    "unit": "%",
+    "name": "в фактах рост +12,3%"
+   },
+   {
+    "type": "num_text",
+    "value": 104162,
+    "unit": "шт.",
+    "name": "в ответе 104,2 тыс. шт."
+   },
+   {
+    "type": "num_text",
+    "value": 12.26,
+    "unit": "%",
+    "name": "в ответе рост +12,3%"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «данные недоступны»",
+    "re": "(?i)недоступн|не определен"
+   }
+  ],
+  "note": "trend measure=qty: шампуни ESTRA, Маяк Косметик. SQL net_sku: янв–сен 2026 — 104 162 шт., янв–сен 2025 — 92 784 шт., +12,26%."
+ },
+ {
+  "id": "N3",
+  "src": "real user session (dialog)",
+  "turns": [
+   "Сколько шампуней ESTRA было продано в Маяк Косметик в августе 2026 года",
+   "Какие именно SKU шампуней ESTRA входят в продажи в «Маяк Косметик»?"
+  ],
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "level": "sku"
+    },
+    "name": "рейтинг SKU"
+   },
+   {
+    "type": "slice",
+    "re": "август 2026",
+    "name": "период взят из прошлого хода: август 2026 (L6-17)"
+   },
+   {
+    "type": "fact",
+    "entity": "SKU",
+    "re": "\\b9\\b",
+    "name": "в фактах: в выборке 9 SKU (L6-8)"
+   },
+   {
+    "type": "fact",
+    "entity": "ESTRA Объем 1000",
+    "value": 3450,
+    "unit": "шт.",
+    "name": "№ 1 Шампунь ESTRA Объем 1000мл — 3 450 шт. за август"
+   },
+   {
+    "type": "answer",
+    "name": "в ответе 9 SKU",
+    "re": "(?i)\\b9\\s+(SKU|позици|наименовани|товар)|SKU[^.\\n]{0,30}\\b9\\b(?![,.]\\d)"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «10 SKU» (K8)",
+    "re": "(?i)(?<!топ-)(?<!топ )\b10 SKU"
+   }
+  ],
+  "note": "Второй ход — уточнение: период (август 2026) и мера (шт.) берутся из первого хода. ranking level=sku: шампуни ESTRA, Маяк Косметик, 08.2026: 9 SKU с продажами; № 1 — Шампунь ESTRA Объем 1000мл, 3 450 шт."
+ },
+ {
+  "id": "N4",
+  "src": "real user session",
+  "q": "Какая доля линейки Питание в продажах шампуней ESTRA в Маяк Косметик за последние 12 месяцев, в штуках?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile",
+     "trend",
+     "sql"
+    ]
+   },
+   {
+    "type": "num_text",
+    "entity": "Питание",
+    "value": 32.27,
+    "unit": "%",
+    "name": "в ответе доля линейки Питание 32,3%",
+    "note": "SQL: subbrand «ESTRA Питание» (SKU Питание 50мл и 300мл) 44 538 из 138 027 шт. за окт 2025 – сен 2026 = 32,27%."
+   },
+   {
+    "type": "forbid",
+    "name": "нет доли за один август (35,0%) вместо 12 месяцев",
+    "re": "35,0"
+   }
+  ],
+  "note": "Линейка = subbrand «ESTRA Питание». ranking level=sku, MAT, шт.: Питание 50мл 23 698 + Питание 300мл 20 840 из 138 027 шт. = 32,27%; за один август 2026 было бы 35,02%."
+ },
+ {
+  "id": "N5",
+  "src": "real user session",
+  "q": "Определи топ-10 брендов по выручке",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "slice",
+    "re": "категории NORD",
+    "name": "срез — категории NORD (по умолчанию)"
+   },
+   {
+    "type": "slice",
+    "re": "окт 2025\\s*[–-]\\s*сен 2026",
+    "name": "период по умолчанию — окт 2025 – сен 2026 (методика п. 2.3)"
+   },
+   {
+    "type": "list_len"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «устойчивый»",
+    "re": "(?i)устойчив"
+   },
+   {
+    "type": "fact",
+    "entity": "HILL&SHORE",
+    "value": 10519179454,
+    "unit": "руб.",
+    "name": "HILL&SHORE 10,52 млрд (лидер в категориях NORD)"
+   },
+   {
+    "type": "fact",
+    "entity": "L'AURELLE PARIS",
+    "value": 5467357360,
+    "unit": "руб.",
+    "name": "L'AURELLE PARIS 5,47 млрд"
+   },
+   {
+    "type": "fact",
+    "entity": "всего|итог",
+    "value": 42721158280,
+    "unit": "руб.",
+    "name": "всего 42,72 млрд (категории NORD)"
+   },
+   {
+    "type": "fact",
+    "entity": "рын",
+    "value": 15.36,
+    "unit": "%",
+    "name": "рынок категорий NORD +15,4% (9 сетей, янв–сен)"
+   },
+   {
+    "type": "forbid",
+    "name": "нет туалетной бумаги в топе (не категория NORD)",
+    "re": "MELLO|MELVA|PAPYRA"
+   }
+  ],
+  "note": "ranking level=brand, категории NORD (9 подгрупп), все сети, MAT 10.2025–09.2026. SQL net_sku: всего 42,72 млрд руб.; HILL&SHORE 10,52 млрд, L'AURELLE PARIS 5,47 млрд. Рынок: 9 сетей, янв–сен 2026 к янв–сен 2025 без пар S.growth_exclusions() (ЛАД и Гиперкосмос за 09.2025 и 09.2026): 27,22 -> 31,41 млрд, +15,36%. Туалетная бумага (MELLO, PAPYRA) — не категория NORD."
+ },
+ {
+  "id": "N6",
+  "src": "real user session",
+  "q": "Какие бренды входят в топ-10 по росту выручки в 2026 году?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "sort": "growth"
+    },
+    "name": "сортировка по росту (K3)"
+   },
+   {
+    "type": "slice",
+    "re": "янв–сен 2026 к янв–сен 2025",
+    "name": "рост янв–сен 2026 к янв–сен 2025"
+   },
+   {
+    "type": "list_len"
+   },
+   {
+    "type": "forbid",
+    "name": "L'AURELLE PARIS (падает) нет в топе по росту",
+    "re": "L.AURELLE PARIS"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «единственный» без факта-агрегата (L6-16)",
+    "re": "(?i)единственн"
+   },
+   {
+    "type": "fact",
+    "entity": "OLLAR",
+    "value": 121.59,
+    "unit": "%",
+    "name": "OLLAR +121,6% (порог 0,1% в обоих периодах)"
+   },
+   {
+    "type": "fact",
+    "entity": "VECTOR ANTI-YELLOW",
+    "value": 46.76,
+    "unit": "%",
+    "name": "VECTOR ANTI-YELLOW +46,8%"
+   },
+   {
+    "type": "fact",
+    "entity": "SUNVEIL",
+    "value": 38.72,
+    "unit": "%",
+    "name": "SUNVEIL +38,7%"
+   },
+   {
+    "type": "answer",
+    "name": "в ответе лидер роста OLLAR",
+    "re": "OLLAR"
+   }
+  ],
+  "note": "ranking level=brand, sort=growth, категории NORD, 9 сетей, янв–сен 2026 к янв–сен 2025 без пар S.growth_exclusions(); порог — доля ≥0,1% в обоих периодах (45 брендов): OLLAR +121,59%, VECTOR ANTI-YELLOW +46,76%, SUNVEIL +38,72%, 365 ДНЕЙ (PL) +36,57%, ТРЕСИЛЬ [TRESILLE] +35,62%. L'AURELLE PARIS падает (−12,44%)."
+ },
+ {
+  "id": "N7",
+  "src": "real user session",
+  "q": "Какие бренды входят в топ-10 по росту продаж?, в сети Гранит, в штуках",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "sort": "growth",
+     "network": "Гранит",
+     "measure": "qty"
+    },
+    "name": "по росту, Гранит, штуки"
+   },
+   {
+    "type": "args_absent",
+    "tool": "ranking",
+    "keys": [
+     "focus"
+    ],
+    "name": "нет focus=Гранит (K5)"
+   },
+   {
+    "type": "list_len"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «нет в рейтинге»",
+    "re": "(?i)нет в рейтинге"
+   },
+   {
+    "type": "fact",
+    "entity": "VECTOR ANTI-YELLOW",
+    "value": 42.66,
+    "unit": "%",
+    "name": "VECTOR ANTI-YELLOW +42,7%"
+   },
+   {
+    "type": "fact",
+    "entity": "ТРЕСИЛЬ",
+    "value": 33.67,
+    "unit": "%",
+    "name": "ТРЕСИЛЬ [TRESILLE] +33,7%"
+   },
+   {
+    "type": "answer",
+    "name": "в ответе лидер роста VECTOR ANTI-YELLOW",
+    "re": "(?i)vector anti-yellow"
+   }
+  ],
+  "note": "ranking level=brand, sort=growth, Гранит, шт., рост янв–сен 2026 к янв–сен 2025, доля ≥0,1% в обоих периодах (43 бренда): VECTOR ANTI-YELLOW +42,66%, ТРЕСИЛЬ [TRESILLE] +33,67%, ВЕСНА +32,97%, SUNVEIL +31,10%."
+ },
+ {
+  "id": "N8",
+  "src": "real user session",
+  "q": "Топ-10 SKU по продажам в сети Гранит (янв–сен 2026, штуки)",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "level": "sku",
+     "network": "Гранит",
+     "measure": "qty"
+    },
+    "name": "SKU, Гранит, штуки"
+   },
+   {
+    "type": "list_len"
+   },
+   {
+    "type": "fact",
+    "entity": "HILL&SHORE Сияние 1000",
+    "value": 2200388,
+    "unit": "шт.",
+    "name": "№ 1 — Шампунь HILL&SHORE Сияние 1000мл, 2,20 млн шт."
+   },
+   {
+    "type": "fact",
+    "entity": "всего|итог",
+    "value": 61320004,
+    "unit": "шт.",
+    "name": "всего 61,32 млн шт. (категории NORD)"
+   },
+   {
+    "type": "fact",
+    "entity": "рын",
+    "value": 10.84,
+    "unit": "%",
+    "name": "рынок категорий NORD в Граните +10,8%"
+   }
+  ],
+  "note": "ranking level=sku, Гранит, категории NORD, шт., янв–сен 2026. SQL net_sku: всего 61,32 млн шт. (1 084 SKU по названию); № 1 Шампунь HILL&SHORE Сияние 1000мл — 2,20 млн шт.; рынок Гранита к янв–сен 2025 (55,32 млн шт.) +10,84%. Рост рынка не зависит от уровня рейтинга (L6-3)."
+ },
+ {
+  "id": "N9",
+  "src": "real user session",
+  "q": "Какие бренды есть в твоей базе?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "data_info",
+     "ranking"
+    ]
+   },
+   {
+    "type": "answer",
+    "name": "названо число брендов (338 с продажами в категориях NORD, 417 по панели или 422 в справочнике)",
+    "re": "(?<!\\d)(338|417|422)(?!\\d)"
+   },
+   {
+    "type": "forbid",
+    "name": "нет выдуманных объемов",
+    "re": "(?<![\\d,])(12[\\s  ]?500|2,1 млн|12 формат)"
+   }
+  ],
+  "note": "data_info: брендов с продажами за 10.2025–09.2026 — 417 (в справочнике 422); в категориях NORD за тот же период — 338; производителей — 96; 17 сетей."
+ },
+ {
+  "id": "N10",
+  "src": "real user session",
+  "q": "Почему L'AURELLE PARIS падает — из-за цен, ассортимента или конкуренции?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "factors",
+     "profile",
+     "prices"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "brand": "L'AURELLE PARIS"
+    },
+    "name": "бренд L'AURELLE PARIS"
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "keys": [
+     "manufacturer"
+    ],
+    "name": "не производитель L'AURELLE (K6, L2-6)"
+   },
+   {
+    "type": "fact",
+    "entity": "9 сет|9 сопостав",
+    "value": -12.44,
+    "unit": "%",
+    "name": "L'AURELLE PARIS −12,4% (9 сетей)"
+   },
+   {
+    "type": "num_text",
+    "value": -12.44,
+    "unit": "%",
+    "name": "в ответе −12,4%"
+   },
+   {
+    "type": "answer",
+    "name": "названа главная причина — выведенные SKU ухода за волосами",
+    "re": "(?i)уход\\w* за волосами|выведен|выбы"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «не связано с ассортиментом»",
+    "re": "(?i)не связан\\w* с ассортимент"
+   }
+  ],
+  "note": "factors: бренд L'AURELLE PARIS, категории NORD, 9 сетей, янв–сен 2026 к янв–сен 2025 без пар S.growth_exclusions(): 4,27 -> 3,74 млрд руб., −12,44%. Главная причина — 38 выведенных SKU подгруппы «Уход за волосами и кожей головы» (−942,0 млн руб.); продажи пары точка × SKU растут."
+ },
+ {
+  "id": "N11",
+  "src": "real user session",
+  "q": "Назови компании, которые продают кондиционеры для волос в Ажуре на уровне, сопоставимом с NORD: сентябрь 2026, в штуках",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "measure": "qty"
+    },
+    "name": "в штуках"
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "focus": "NORD"
+    },
+    "name": "focus=NORD"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD",
+    "value": 17266,
+    "unit": "шт.",
+    "name": "NORD — 17,3 тыс. шт."
+   },
+   {
+    "type": "fact",
+    "entity": "PARKER & GRANT",
+    "value": 38465,
+    "unit": "шт.",
+    "name": "в фактах есть лидер PARKER & GRANT — 38,5 тыс. шт. (L6-7)"
+   },
+   {
+    "type": "answer",
+    "name": "названы производители рядом с NORD",
+    "re": "(?i)UNIVERA|HELMAN|L.AURELLE"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «у лидеров не больше, чем у NORD»",
+    "re": "(?i)не превыша\\w* 17"
+   },
+   {
+    "type": "forbid",
+    "name": "NORD не 1-е место",
+    "re": "(?i)NORD[^.]{0,40}(1-е|перв\\w*) мест"
+   }
+  ],
+  "note": "Как M2: Ажур, «Бальзам для волос», 09.2026, шт.: NORD 17 266 (3-е место из 14), PARKER & GRANT 38 465, L'AURELLE 32 695, UNIVERA 17 092."
+ },
+ {
+  "id": "N12",
+  "src": "real user session",
+  "q": "Динамика продаж NORD по месяцам: сентябрь 2026 к сентябрю 2025",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "trend"
+    ]
+   },
+   {
+    "type": "fact",
+    "entity": "сен",
+    "value": 16.12,
+    "unit": "%",
+    "name": "сентябрь 2026 к сентябрю 2025 +16,1% (9 сетей)"
+   },
+   {
+    "type": "num_text",
+    "value": 16.12,
+    "unit": "%",
+    "name": "в ответе +16,1%"
+   },
+   {
+    "type": "fact",
+    "in": "caveats",
+    "re": "ЛАД|Гиперкосмос",
+    "name": "оговорка: 09.2026 у ЛАД и Гиперкосмоса неполный"
+   },
+   {
+    "type": "forbid",
+    "name": "нет «данные недоступны»",
+    "re": "(?i)недоступн|не определен"
+   }
+  ],
+  "note": "trend: NORD, категории NORD, 9 сетей, 09.2026 к 09.2025 без пар S.growth_exclusions() (ЛАД и Гиперкосмос за оба сентября). SQL net_sku: 206,93 -> 240,30 млн руб., +16,12%."
+ },
+ {
+  "id": "N13",
+  "src": "real user session",
+  "q": "Доли топ-5 брендов NORD по месяцам",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "trend"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "trend",
+    "has": {
+     "level": "brand",
+     "manufacturer": "NORD"
+    },
+    "name": "trend по брендам NORD"
+   },
+   {
+    "type": "answer",
+    "name": "в ответе лидер ATELIER PROFESSIONAL",
+    "re": "(?i)atelier professional"
+   }
+  ],
+  "note": "trend с level=brand раньше падал (L6-4). Топ брендов NORD за 10.2025–09.2026: ATELIER PROFESSIONAL 1,45 млрд, VECTOR FUSION 492,1 млн, SILK 353,5 млн."
+ },
+ {
+  "id": "N14",
+  "src": "real user session (dialog)",
+  "turns": [
+   "Какие бренды входят в топ-10 по росту продаж?, в сети Гранит, в штуках",
+   "Топ-10 по росту продаж в сети Гранит (янв–сен 2026, штуки)"
+  ],
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "sort": "growth",
+     "network": "Гранит",
+     "measure": "qty",
+     "period": "2026-01..2026-09"
+    },
+    "name": "по росту, Гранит, штуки, янв–сен 2026"
+   },
+   {
+    "type": "args_absent",
+    "tool": "ranking",
+    "keys": [
+     "focus"
+    ],
+    "name": "нет focus=Гранит (K5)"
+   },
+   {
+    "type": "list_len"
+   },
+   {
+    "type": "fact",
+    "entity": "VECTOR ANTI-YELLOW",
+    "value": 42.66,
+    "unit": "%",
+    "name": "VECTOR ANTI-YELLOW +42,7%"
+   },
+   {
+    "type": "fact",
+    "entity": "ТРЕСИЛЬ",
+    "value": 33.67,
+    "unit": "%",
+    "name": "ТРЕСИЛЬ [TRESILLE] +33,7%"
+   },
+   {
+    "type": "answer",
+    "name": "в ответе лидер роста VECTOR ANTI-YELLOW",
+    "re": "(?i)vector anti-yellow"
+   }
+  ],
+  "note": "Второй ход называет период явно; ожидания как в N7 (янв–сен 2026 к янв–сен 2025): VECTOR ANTI-YELLOW +42,66%, ТРЕСИЛЬ [TRESILLE] +33,67%."
+ },
+ {
+  "id": "R1",
+  "src": "NLU regression",
+  "q": "Рост продаж NORD в сентябре 2026 к сентябрю 2025",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile",
+     "trend",
+     "factors"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "period": "2026-09"
+    },
+    "name": "период — сентябрь 2026, база — 2025"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD|9 сопостав|9 сет|сен",
+    "value": 16.12,
+    "unit": "%",
+    "name": "рост NORD +16,1% (9 сетей)"
+   },
+   {
+    "type": "num_text",
+    "value": 16.12,
+    "unit": "%",
+    "name": "в ответе +16,1%"
+   },
+   {
+    "type": "fact",
+    "in": "caveats",
+    "re": "ЛАД|Гиперкосмос",
+    "name": "оговорка: 09.2026 у ЛАД и Гиперкосмоса неполный"
+   }
+  ],
+  "note": "Текущий период — более поздний. SQL net_sku как в N12: NORD, 9 сетей, без пар S.growth_exclusions(): 206,93 -> 240,30 млн руб., +16,12% (с перевернутыми периодами вышло бы −13,89%)."
+ },
+ {
+  "id": "R2",
+  "src": "NLU regression",
+  "q": "Продажи GREEN SHOP в Ниве за 2025 год",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile",
+     "trend"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "brand": "GREEN SHOP"
+    },
+    "name": "бренд GREEN SHOP (фильтром или объектом сравнения)",
+    "any_of": [
+     {
+      "brand": "GREEN SHOP"
+     },
+     {
+      "focus": "GREEN SHOP"
+     }
+    ]
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "keys": [
+     "manufacturer"
+    ],
+    "name": "без фильтра производителя (GREEN SHOP — бренд)"
+   },
+   {
+    "type": "fact",
+    "value": 31940853,
+    "unit": "руб.",
+    "name": "GREEN SHOP в Ниве за 2025 — 31,9 млн руб."
+   }
+  ],
+  "note": "GREEN SHOP — бренд (производитель GREEN), а не производитель. SQL net_sku: бренд GREEN SHOP, категории NORD, Нива, 2025 год — 31,94 млн руб."
+ },
+ {
+  "id": "R3",
+  "src": "NLU regression",
+  "q": "Доля NORD в категории Косметика во всех сетях, кроме Гранита",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "exclude": {
+      "network": "Гранит"
+     }
+    },
+    "name": "Гранит в исключениях"
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "has": {
+     "network": "Гранит"
+    },
+    "name": "Гранит не фильтр"
+   },
+   {
+    "type": "slice",
+    "re": "исключено",
+    "name": "в срезе указано исключение"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD",
+    "value": 6.23,
+    "unit": "%",
+    "name": "доля NORD без Гранита 6,2%"
+   }
+  ],
+  "note": "«Кроме Гранита» — исключение, а не фильтр. SQL net_sku: 6 подгрупп портала, 10.2025–09.2026, все сети кроме Гранита: доля NORD 6,23%."
+ },
+ {
+  "id": "R4",
+  "src": "NLU regression",
+  "q": "Верно ли, что продажи NORD в Ажуре растут?",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking",
+     "profile",
+     "trend",
+     "factors"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "*",
+    "has": {
+     "network": "Ажур"
+    },
+    "name": "только сеть Ажур (фильтром или объектом сравнения)",
+    "any_of": [
+     {
+      "network": "Ажур"
+     },
+     {
+      "focus": "Ажур"
+     }
+    ]
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "has": {
+     "network": "Добрый (сеть)"
+    },
+    "name": "без сети Добрый"
+   },
+   {
+    "type": "fact",
+    "entity": "NORD|Ажур|выборк",
+    "value": 13.31,
+    "unit": "%",
+    "name": "NORD в Ажуре +13,3%"
+   },
+   {
+    "type": "num_text",
+    "value": 13.31,
+    "unit": "%",
+    "name": "в ответе +13,3%"
+   }
+  ],
+  "note": "«Верно ли» — не сеть Добрый. SQL net_sku: NORD, категории NORD, Ажур, янв–сен 2026 к янв–сен 2025: 100,06 -> 113,38 млн руб., +13,31%."
+ },
+ {
+  "id": "R5",
+  "src": "NLU regression",
+  "q": "Топ-5 брендов шампуней в Детском острове",
+  "checks": [
+   {
+    "type": "tool",
+    "any": [
+     "ranking"
+    ]
+   },
+   {
+    "type": "args_has",
+    "tool": "ranking",
+    "has": {
+     "network": "Детский Остров (сеть)"
+    },
+    "name": "сеть Детский Остров"
+   },
+   {
+    "type": "args_absent",
+    "tool": "*",
+    "has": {
+     "kids": true
+    },
+    "name": "без kids=true (L2-4)"
+   },
+   {
+    "type": "answer",
+    "name": "лидер КОРОЛЕВНА",
+    "re": "(?i)королевн"
+   }
+  ],
+  "note": "Название сети не включает фильтр детских подгрупп. ranking: тип «Шампунь», Детский Остров, 10.2025–09.2026: КОРОЛЕВНА 1,4 млн руб. (98%), АУРИКА МАЛЫШ 15,6 тыс., МОЙ ЛУЧИК 10,8 тыс."
+ }
+]

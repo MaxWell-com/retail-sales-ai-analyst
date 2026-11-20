@@ -1,0 +1,23 @@
+services:
+  ollama:
+    image: ollama/ollama:0.9.0
+    volumes:
+      - ollama:/root/.ollama
+    ports:
+      - "11434:11434"
+  model:            # one-shot: pull the model into the shared volume
+    image: ollama/ollama:0.9.0
+    depends_on: [ollama]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["ollama", "pull", "${VT_MODEL:-qwen2.5:7b}"]
+  app:
+    build: .
+    depends_on: [ollama]
+    environment:
+      OLLAMA_URL: http://ollama:11434
+      VT_MODEL: ${VT_MODEL:-qwen2.5:7b}
+    ports:
+      - "8765:8765"
+volumes:
+  ollama:
